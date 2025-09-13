@@ -1,0 +1,165 @@
+:root{
+  --ad-bg:#0b0f19;
+  --ad-panel:#111629;
+  --ad-muted:#8ea0b5;
+  --ad-text:#e6edf6;
+  --ad-accent:#ff6a00; /* cam đồng bộ */
+  --ad-border:#1b2138;
+  --ad-accent-700:#e45f00;
+  --ad-glow: 0 8px 28px rgba(255,106,0,.15);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body.ad-body{
+  margin:0; background:var(--ad-bg); color:var(--ad-text);
+  font:500 14px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  display:grid; grid-template-columns:240px 1fr; grid-template-rows:100%;
+}
+
+.ad-aside{
+  background:var(--ad-panel); border-right:1px solid var(--ad-border);
+  display:flex; flex-direction:column; gap:12px; padding:16px;
+  position:sticky; top:0; height:100vh;
+}
+.ad-brand{padding:6px 0 12px}
+.ad-logo{color:#fff; text-decoration:none; font-weight:800; letter-spacing:.5px}
+.ad-menu{display:flex; flex-direction:column; gap:6px}
+.ad-item{
+  display:block; padding:10px 12px; color:var(--ad-text); text-decoration:none; border-radius:10px;
+  transition: background .18s ease, border-color .18s ease, transform .2s ease;
+}
+.ad-item:hover{background:#1a2240}
+.ad-item.is-active{
+  background: linear-gradient(90deg,rgba(255,106,0,.16), transparent);
+  border:1px solid rgba(255,106,0,.35);
+}
+
+.ad-main{padding:22px 24px; overflow:auto}
+.ad-topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px}
+.ad-topbar h1{font-size:20px; margin:0}
+
+.ad-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
+  background:var(--ad-accent); color:#111; text-decoration:none; font-weight:700; border:none;
+  transition: transform .08s ease, box-shadow .25s ease, background .2s ease;
+  box-shadow: var(--ad-glow);
+}
+.ad-btn:hover{ background:var(--ad-accent-700); transform: translateY(-1px); }
+.ad-btn:active{ transform: translateY(0); }
+.ad-btn--ghost{
+  background: transparent; color:var(--ad-text); border:1px solid var(--ad-border);
+}
+.ad-btn--ghost:hover{
+  border-color: rgba(255,106,0,.55);
+  box-shadow: 0 8px 24px rgba(255,106,0,.15);
+}
+
+.ad-card{
+  background:var(--ad-panel); border:1px solid var(--ad-border); border-radius:14px; overflow:hidden;
+}
+.ad-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px; border-bottom:1px solid var(--ad-border)
+}
+.ad-card-head h2{font-size:16px; margin:0}
+.ad-card-body{ padding:14px; }
+
+.ad-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.ad-grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.ad-col-2{grid-column:1 / -1}
+
+.ad-form{display:block}
+.ad-form .ad-field{display:flex; flex-direction:column; gap:6px}
+.ad-form .ad-form-actions{
+  margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;
+}
+
+.ad-input, .ad-select, .ad-form textarea{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--ad-border);
+  background:#0f1529; color:var(--ad-text); outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.ad-input::placeholder{color:#7f8aa3}
+.ad-input:focus, .ad-select:focus, .ad-form textarea:focus{
+  border-color: rgba(255,106,0,.6);
+  box-shadow: 0 0 0 3px rgba(255,106,0,.18);
+  background:#0d1222;
+}
+
+.ad-check{display:inline-flex; align-items:center; gap:8px; margin-top:6px}
+.ad-check input{ width:16px; height:16px }
+
+.ad-filters{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+}
+.ad-filters .ad-input{ min-width:260px }
+
+.ad-alert{
+  margin:12px 14px 0; padding:10px 12px; border-radius:10px; font-weight:600;
+  border:1px solid var(--ad-border); background:#0f1426;
+}
+.ad-alert--ok{ border-color: rgba(67,181,129,.4); background: rgba(67,181,129,.08); color:#8ef0c3 }
+.ad-alert--err{ border-color: rgba(255,85,85,.4); background: rgba(255,85,85,.08); color:#ff9a9a }
+
+.ad-table{overflow:auto; border-top:1px solid var(--ad-border)}
+.ad-table table{width:100%; border-collapse:separate; border-spacing:0}
+.ad-table th, .ad-table td{padding:12px 12px; border-bottom:1px solid var(--ad-border); text-align:left; vertical-align:middle}
+.ad-table thead th{
+  color:var(--ad-muted); font-size:12px; font-weight:700;
+  position:sticky; top:0; background:var(--ad-panel); z-index:2;
+}
+.ad-table tbody tr{ transition: background .18s ease }
+.ad-table tbody tr:hover{ background:#121b34 }
+.ad-thumb{
+  width:56px; height:40px; object-fit:cover; border-radius:8px; border:1px solid var(--ad-border);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.ad-thumb:hover{ transform: translateY(-1px); box-shadow: var(--ad-glow); }
+
+.ad-link{color:#9cc1ff; text-decoration:none}
+.ad-link:hover{text-decoration:underline}
+
+.ad-badge{
+  display:inline-flex; align-items:center; justify-content:center; min-width:36px;
+  height:24px; padding:0 8px; border-radius:999px; border:1px solid var(--ad-border);
+  color:var(--ad-muted); background:#0f1529; font-size:12px;
+}
+.ad-badge--ok{ color:#0aff8a; border-color:rgba(10,255,138,.4); background: rgba(10,255,138,.08) }
+
+.ad-empty{color:var(--ad-muted); text-align:center; padding:18px}
+
+.ad-paging{
+  display:flex; gap:8px; justify-content:center; padding:14px;
+}
+.ad-page{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:36px; min-width:36px; padding:0 10px; border-radius:10px;
+  text-decoration:none; color:var(--ad-text);
+  border:1px solid var(--ad-border); background:#0f1529;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+}
+.ad-page:hover{ border-color: rgba(255,106,0,.55); box-shadow: var(--ad-glow) }
+.ad-page.is-active{
+  background: linear-gradient(180deg, rgba(255,106,0,.22), rgba(255,106,0,.08));
+  border-color: rgba(255,106,0,.6);
+}
+
+details.ad-card > summary.ad-card-head{
+  cursor:pointer; list-style:none;
+}
+details.ad-card > summary.ad-card-head::-webkit-details-marker{ display:none; }
+details.ad-card[open] > summary.ad-card-head{
+  background: linear-gradient(90deg, rgba(255,106,0,.08), transparent);
+}
+
+@media (max-width: 980px){
+  body.ad-body{grid-template-columns:1fr}
+  .ad-aside{position:static; height:auto; border-right:none}
+  .ad-grid-2{grid-template-columns:1fr}
+}
+
+/* Tinh chỉnh scrollbar (desktop) */
+.ad-table::-webkit-scrollbar{ height:10px; width:10px }
+.ad-table::-webkit-scrollbar-thumb{ background:#1f2948; border-radius:10px }
+.ad-table::-webkit-scrollbar-thumb:hover{ background:#273359 }

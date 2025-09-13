@@ -1,0 +1,69 @@
+/* ==== THEME OVERRIDE: ORANGE (đặt ở CUỐI file) ==== */
+:root{
+  --brand: #ff7a00;        /* cam chủ đạo cho card/nút/giá */
+  --brand-700: #e96b00;    /* cam đậm khi hover */
+  --brand-red: #ff7a00;    /* đồng bộ phần header đang dùng --brand-red */
+  --brand-rgb: 255,122,0;
+}
+
+/* Button chính, giá, badge, tim yêu thích, focus ring */
+.btn-primary{
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+.btn-primary:hover{
+  background: var(--brand-700) !important;
+  border-color: var(--brand-700) !important;
+}
+.price{ color: var(--brand) !important; }
+
+.badge-new{
+  background: var(--brand) !important;
+  box-shadow: 0 6px 16px rgba(var(--brand-rgb), .34) !important;
+}
+.fav-btn.active{
+  color: var(--brand) !important;
+  border-color: rgba(var(--brand-rgb), .35) !important;
+  background: rgba(var(--brand-rgb), .08) !important;
+  box-shadow: 0 6px 18px rgba(var(--brand-rgb), .18) !important;
+}
+.fav-btn:focus-visible, .btn:focus-visible{
+  outline: 3px solid rgba(var(--brand-rgb), .30) !important;
+}
+
+/* Header/nav đang dùng palette đỏ riêng → ép sang cam */
+.hb-link:hover,
+.hb-link.is-active{
+  color: var(--brand-red) !important;
+  background: rgba(var(--brand-rgb), .08) !important;
+}
+.hb-link::after{ background: var(--brand-red) !important; }
+.hb-search input:focus{ box-shadow: 0 0 0 4px rgba(var(--brand-rgb), .12) !important; }
+.hb-icon-btn:focus-visible{ outline: 3px solid rgba(var(--brand-rgb), .30) !important; }
+.hb-fav.is-active{
+  background: rgba(var(--brand-rgb), .08) !important;
+  border-color: rgba(var(--brand-rgb), .35) !important;
+}
+.hb-badge{
+  background: var(--brand-red) !important;
+  box-shadow: 0 3px 8px rgba(var(--brand-rgb), .40) !important;
+}
+/* Heart active -> màu cam (bắt cả class và aria-pressed) */
+.fav-btn.active,
+.fav-btn[aria-pressed="true"]{
+  color: var(--brand) !important;
+  border-color: rgba(var(--brand-rgb), .35) !important;
+  background: rgba(var(--brand-rgb), .08) !important;
+  box-shadow: 0 6px 18px rgba(var(--brand-rgb), .18) !important;
+}
+
+/* đảm bảo icon nhận màu từ button */
+.fav-btn .icon-heart path{ fill: currentColor; }
+.fav-btn.active,
+.fav-btn[aria-pressed="true"]{
+  color: var(--brand) !important;
+  border-color: rgba(var(--brand-rgb), .35) !important;
+  background: rgba(var(--brand-rgb), .08) !important;
+  box-shadow: 0 6px 18px rgba(var(--brand-rgb), .18) !important;
+}
+.fav-btn .icon-heart path{ fill: currentColor; }

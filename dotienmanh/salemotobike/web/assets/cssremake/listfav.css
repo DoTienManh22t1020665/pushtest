@@ -1,0 +1,131 @@
+/* ===== LISTFAV v3 (hero lớn + lưới 4 cột, giữ mọi chức năng) ===== */
+:root{
+  --bg:#f6f7fb;
+  --text:#0e1115;
+  --muted:#6b7280;
+  --card:#fff;
+  --stroke:rgba(9,14,22,.06);
+  --shadow:0 10px 30px rgba(16,24,40,.08);
+  --radius:18px;
+  --orange:#ff8a00;
+  --orange2:#ffa63b;
+}
+
+body{ background:var(--bg); }
+
+/* ---------- HERO to + chip tổng số ---------- */
+.fav-hero{
+  position:relative;
+  padding:20px 6px 0;
+  margin:6px 0 14px;
+}
+.fav-hero-row{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+}
+.fav-title{
+  margin:0; color:var(--text);
+  font-weight:900; letter-spacing:-.01em;
+  font-size:clamp(28px,3.4vw,40px); line-height:1.05;
+}
+.fav-sub{ margin:8px 0 0; color:var(--muted); font-size:15px; }
+
+.fav-total-chip{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#fff; border:1px solid var(--stroke); border-radius:999px;
+  padding:10px 14px; box-shadow:var(--shadow); min-width:110px; justify-content:center;
+  font-weight:800; color:var(--text);
+}
+.fav-total-chip .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--orange2));
+}
+
+/* ---------- TOOLBAR (search + sort) ---------- */
+.fav-toolbar{
+  margin:14px 0 6px;
+  display:grid; grid-template-columns:1fr auto; gap:12px;
+}
+.fav-search{
+  display:flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid var(--stroke);
+  border-radius:12px; padding:9px 12px;
+}
+.fav-search input{
+  border:0; outline:0; width:100%; background:transparent; font-size:15px;
+}
+.fav-select{
+  height:40px; border-radius:12px; border:1px solid var(--stroke);
+  background:#fff; font-weight:700; padding:0 12px; font-size:14px;
+}
+
+/* ---------- GRID & CARD ---------- */
+.fav-grid{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:20px;
+}
+
+/* 4 cột trên desktop, xuống 3/2/1 khi hẹp */
+.fav-card{ grid-column:span 3; }
+@media(max-width:1200px){ .fav-card{ grid-column:span 4; } } /* 3 cột */
+@media(max-width:900px){ .fav-card{ grid-column:span 6; } }   /* 2 cột */
+@media(max-width:640px){ .fav-card{ grid-column:span 12; } }  /* 1 cột */
+
+.fav-card{
+  background:var(--card); border:1px solid var(--stroke);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+  overflow:hidden; transform:translateY(8px); opacity:0;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s;
+}
+.fav-card.is-inview{ transform:translateY(0); opacity:1; }
+
+.fav-thumb{
+  aspect-ratio:16/9; background:#f2f5fb; display:grid; place-items:center; overflow:hidden;
+}
+.fav-thumb img{
+  max-width:88%; height:auto;
+  filter:drop-shadow(0 6px 24px rgba(0,0,0,.18));
+  transform:scale(.98); transition:transform .35s ease;
+}
+.fav-card:hover .fav-thumb img{ transform:scale(1); }
+
+.fav-info{ padding:18px; }
+.fav-name{ margin:0 0 6px; font-weight:900; font-size:clamp(18px,1.8vw,20px); }
+.fav-name a{ color:var(--text); text-decoration:none; }
+.fav-price{ font-weight:900; font-size:18px; margin-bottom:14px; }
+
+.fav-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.btn{ border-radius:12px; border:0; cursor:pointer; font-weight:800; padding:10px 14px; font-size:14px; }
+.btn-primary{
+  background:linear-gradient(135deg,var(--orange),var(--orange2));
+  color:#fff; box-shadow:0 6px 16px rgba(255,138,0,.25);
+}
+.btn-ghost{ background:#fff; border:1px solid var(--stroke); color:var(--text); }
+.btn-ghost:hover{ background:#f9fafb; }
+
+/* ---------- EMPTY ---------- */
+.fav-empty{
+  display:none; text-align:center; background:#fff;
+  border:1px dashed var(--stroke); border-radius:16px;
+  padding:28px 16px; color:var(--muted); margin-top:10px;
+}
+.fav-empty.is-show{ display:block; }
+.fav-empty .btn{ margin-top:10px; }
+
+.fav-empty-filter{ display:none; text-align:center; color:var(--muted); margin:12px 0; }
+.fav-empty-filter.is-show{ display:block; }
+
+/* skeleton ảnh */
+.fav-thumb.is-loading{
+  position:relative;
+  background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 37%,#f3f4f6 63%);
+  background-size:400% 100%; animation:fShimmer 1.2s infinite;
+}
+@keyframes fShimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
+
+/* toast */
+.fav-toast{
+  position:fixed; right:18px; bottom:18px; z-index:9999;
+  background:#111827; color:#fff; padding:10px 14px; border-radius:10px;
+  box-shadow:0 10px 25px rgba(2,6,23,.35);
+  transform:translateY(16px); opacity:0; transition:.35s ease;
+}
+.fav-toast.show{ transform:translateY(0); opacity:1; }
